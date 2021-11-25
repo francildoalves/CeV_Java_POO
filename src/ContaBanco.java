@@ -1,3 +1,5 @@
+import java.lang.invoke.ConstantBootstraps;
+
 /** 
  * 
  * A classe ContaBanco contém os atributos e métodos para manipular as solicitações de uma conta bancároa.
@@ -17,6 +19,7 @@ public class ContaBanco {
     private float saldo;
     private boolean status;
     
+    
 
     /**
      * <p> O método abrirConta é responsável por abrir uma nova conta. </p>
@@ -26,20 +29,38 @@ public class ContaBanco {
      */
     private abrirConta(){}
 
+
     /**
      * <p> O método fecharConta é responsável por fechar uma conta. </p>
      * <p> Para ser fechada uma conta não pode ter saldo positivo ou negativo. </p> 
      */
     private fecharConta(){}
 
+
      /**
      * O método depositar é responsável por incluir valores em uma conta.
-     * Para ser fechada uma conta não pode ter saldo positivo ou negativo.
+     * <p> Ele recebe um valor real e adiciona esse valor na variável {@paran saldo}.</p>
+     * <p> Para poder depositar a conta precisa estar aberta. </p>
+     * @return saldo
      */   
     private depositar(){}
 
+
+     /**
+     * O método sacar é responsável por retirar valores em uma conta.
+     * <p> Ele recebe um valor real e subtrai esse valor na variável {@paran saldo}.</p>
+     * <p> Para poder sacar a conta precisa estar aberta e é preciso que o valor a ser sacado seja menor ou igual ao saldo em conta. </p>
+     * @return ???
+     */   
     sacar(){}
 
+
+     /**
+     * O método pagarMensal é responsável por fazer o pagamento da taxa de manutenção da conta.
+     * <p> Ele recebe um valor real e subtrai esse valor na variável {@paran saldo}.</p>
+     * <p> Para poder sacar a conta precisa estar aberta e é preciso que o valor a ser sacado seja menor ou igual ao saldo em conta. </p>
+     * @return ???
+     */   
     pagarMensal(){}
 
 
