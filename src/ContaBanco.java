@@ -13,13 +13,18 @@ import java.lang.invoke.ConstantBootstraps;
  * @date 25/11/2021
  */
 public class ContaBanco {
-    private int numConta;
-    private String tipo;
+    public int numConta;
+    protected String tipo;
     private String dono;
     private float saldo;
     private boolean status;
     
     
+    /**
+     * <p> O método ??? construtor da conta. </p>
+     * <p> Sempre que uma nova conta for criada, o valor da variável {@paran status} é alterado para false, ou seja, a conta está fechada e o {@paran saldo} é defindo como zero.</p>
+     */
+    public ContaBanco(){}
 
     /**
      * <p> O método abrirConta é responsável por abrir uma nova conta. </p>
@@ -38,7 +43,7 @@ public class ContaBanco {
 
 
      /**
-     * O método depositar é responsável por incluir valores em uma conta.
+     * <p> O método depositar é responsável por incluir valores em uma conta.</p>
      * <p> Ele recebe um valor real e adiciona esse valor na variável {@paran saldo}.</p>
      * <p> Para poder depositar a conta precisa estar aberta. </p>
      * @return saldo
@@ -47,7 +52,7 @@ public class ContaBanco {
 
 
      /**
-     * O método sacar é responsável por retirar valores em uma conta.
+     * <p> O método sacar é responsável por retirar valores em uma conta.</p>
      * <p> Ele recebe um valor real e subtrai esse valor na variável {@paran saldo}.</p>
      * <p> Para poder sacar a conta precisa estar aberta e é preciso que o valor a ser sacado seja menor ou igual ao saldo em conta. </p>
      * @return ???
@@ -56,8 +61,8 @@ public class ContaBanco {
 
 
      /**
-     * O método pagarMensal é responsável por fazer o pagamento da taxa de manutenção da conta.
-     * <p> Ele recebe um valor real e subtrai esse valor na variável {@paran saldo}.</p>
+     * <p> O método pagarMensal é responsável por fazer o pagamento da taxa de manutenção da conta.</p>
+     * <p> Ao ser chamado, o método irá debitar um valor na variável {@paran saldo}, sendo: R$12,00 para Conta Corrente (CC) e R$ 20,00 para Conta Popança (CP).</p>
      * <p> Para poder sacar a conta precisa estar aberta e é preciso que o valor a ser sacado seja menor ou igual ao saldo em conta. </p>
      * @return ???
      */   
