@@ -3,7 +3,7 @@
  * A classe ContaBanco contém os atributos e métodos para manipular as solicitações de uma conta bancároa.
  * 
  * @param numConta - Armazena um número inteiro com o número da conta
- * @param tipo -  Armazena uma String com o tipo de conta que será criada que pode ser uma Conta Corrente "CC" ou Conta Poupança.
+ * @param tipo -  Armazena uma String com o tipo de conta que será criada ela pode ser uma Conta Corrente "CC" ou Conta Poupança CP.
  * @param dono -  Armazena uma String com o nome do dono da conta.
  * @param saldo - Armazena um múmero do tipo float com o saldo atual da conta.
  * @param status - Armazena um valor booleano com o status da conta, sendo true para conta aberta e false para conta fechada.
@@ -15,16 +15,27 @@ public class ContaBanco {
     private String tipo;
     private String dono;
     private float saldo;
-
+    private boolean status;
     
 
     /**
-     * O método AbriConta é responsável por abrir uma conta    */
-    
+     * <p> O método abrirConta é responsável por abrir uma nova conta. </p>
+     * <p> Ele altera o valor da variável {@paran status} para true. Se a conta está aberta o status é true, se a conta está fechada, o status é false.</p>
+     * <p> Ao abrir uma conta, a variável {@paran tipo} recebe o tipo de conta, sendo CC para Conta Corrente e CP para Conta Poupança.</p>
+     * <p> Ao abrir uma conta, ela receberá um valor na variável {@paran saldo}, sendo: R$50,00 para Conta Corrente (CC) e R$ 150,00 para Conta Popança (CP).</p>
+     */
     private abrirConta(){}
 
+    /**
+     * <p> O método fecharConta é responsável por fechar uma conta. </p>
+     * <p> Para ser fechada uma conta não pode ter saldo positivo ou negativo. </p> 
+     */
     private fecharConta(){}
 
+     /**
+     * O método depositar é responsável por incluir valores em uma conta.
+     * Para ser fechada uma conta não pode ter saldo positivo ou negativo.
+     */   
     private depositar(){}
 
     sacar(){}
