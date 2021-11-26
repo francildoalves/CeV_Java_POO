@@ -143,7 +143,18 @@ public class ContaBanco {
      * <p> Para poder depositar a conta precisa estar aberta. </p>
      * @return saldo
      */   
-    //public depositar(){}
+    public void depositar(float valor){
+        try {
+            if (getStatus()) {
+                setSaldo(getSaldo() + valor);
+            } else {
+                System.out.println("Impossível fazer depósito. A conta não está aberta.");
+            }
+        } catch (Exception e) {
+            //TODO: Erro não identificado
+            System.out.println("Ocorreu um erro. Operação não realizada");
+        }
+    }
 
 
      /**
