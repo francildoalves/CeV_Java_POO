@@ -24,7 +24,10 @@ public class ContaBanco {
      * <p> O método ??? construtor da conta. </p>
      * <p> Sempre que uma nova conta for criada, o valor da variável {@paran status} é alterado para false, ou seja, a conta está fechada e o {@paran saldo} é defindo como zero.</p>
      */
-    public ContaBanco(){}
+    public ContaBanco(){
+        saldo = 0;
+        status = false;
+    }
 
     /**
      * <p> O método abrirConta é responsável por abrir uma nova conta. </p>
@@ -67,6 +70,9 @@ public class ContaBanco {
      * @return ???
      */   
     public pagarMensal(){}
+
+
+    
 
 
 }
