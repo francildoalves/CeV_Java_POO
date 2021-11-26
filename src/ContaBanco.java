@@ -18,7 +18,8 @@ public class ContaBanco {
     private String dono;
     private float saldo;
     private boolean status;
-    
+
+       
     
     /**
      * <p> O método ??? construtor da conta. </p>
@@ -72,7 +73,14 @@ public class ContaBanco {
     public pagarMensal(){}
 
 
-    
+    /**
+     * MÉTODOS GETTERs AND SETTERs
+     */
+
+     
+     public int getNunConta(){
+         return this.numConta;
+     }
 
 
 }
