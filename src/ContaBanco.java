@@ -13,7 +13,7 @@ import java.lang.invoke.ConstantBootstraps;
  * @date 25/11/2021
  */
 public class ContaBanco {
-    public int numConta;
+    public int numConta = 0;
     protected String tipo;
     private String dono;
     private float saldo;
@@ -26,8 +26,8 @@ public class ContaBanco {
      * <p> Sempre que uma nova conta for criada, o valor da variável {@paran status} é alterado para false, ou seja, a conta está fechada e o {@paran saldo} é defindo como zero.</p>
      */
     public ContaBanco(){
-        saldo = 0;
-        status = false;
+        this.saldo = 0;
+        this.status = false;
     }
 
 
@@ -44,6 +44,38 @@ public class ContaBanco {
         this.numConta = numConta;
     }
 
+    public String getTipo(){
+        return this.tipo;
+    }
+
+    public void setTipo(String tipo){
+        this.tipo = tipo;
+    }
+
+    public String getDono(){
+        return this.dono;
+    }
+
+    public void setDono(){
+        this.dono = dono;
+    }
+
+    public float getSaldo(){
+        return this.saldo;
+    }
+
+    public void setSaldo(float saldo){
+        this.saldo = saldo;
+    }
+    
+    public boolean getStatus(){
+        return this.status;
+    }
+
+    public void setStatus(boolean status){
+        this.status = status;
+    }
+
 
 
 
@@ -53,7 +85,22 @@ public class ContaBanco {
      * <p> Ao abrir uma conta, a variável {@paran tipo} recebe o tipo de conta, sendo CC para Conta Corrente e CP para Conta Poupança.</p>
      * <p> Ao abrir uma conta, ela receberá um valor na variável {@paran saldo}, sendo: R$50,00 para Conta Corrente (CC) e R$ 150,00 para Conta Popança (CP).</p>
      */
-    public abrirConta(){}
+    public void abrirConta(String tipo){
+        this.status = true;
+        this.numConta = numConta++;
+        this.tipo = tipo;
+        try {
+            if(this.tipo == "CC"){
+                this.saldo = saldo+50.f;
+            }if(this.tipo == "CP"){
+                this.saldo = saldo+150.f;
+            }
+            System.out.println("O saldo da conta" + numConta + " é: " + this.saldo);
+        } catch (Exception e) {
+            //TODO: handle exception
+            System.out.println("Digite CC para conta Corrente ou CP para conta Poupança");
+        }
+    }
 
 
     /**
@@ -88,9 +135,5 @@ public class ContaBanco {
      * @return ???
      */   
     public pagarMensal(){}
-
-
-
-
 
 }
