@@ -32,14 +32,14 @@ public class ContaBanco {
      * <p> Ao abrir uma conta, a variável {@paran tipo} recebe o tipo de conta, sendo CC para Conta Corrente e CP para Conta Poupança.</p>
      * <p> Ao abrir uma conta, ela receberá um valor na variável {@paran saldo}, sendo: R$50,00 para Conta Corrente (CC) e R$ 150,00 para Conta Popança (CP).</p>
      */
-    private abrirConta(){}
+    public abrirConta(){}
 
 
     /**
      * <p> O método fecharConta é responsável por fechar uma conta. </p>
      * <p> Para ser fechada uma conta não pode ter saldo positivo ou negativo. </p> 
      */
-    private fecharConta(){}
+    public fecharConta(){}
 
 
      /**
@@ -48,7 +48,7 @@ public class ContaBanco {
      * <p> Para poder depositar a conta precisa estar aberta. </p>
      * @return saldo
      */   
-    private depositar(){}
+    public depositar(){}
 
 
      /**
@@ -57,7 +57,7 @@ public class ContaBanco {
      * <p> Para poder sacar a conta precisa estar aberta e é preciso que o valor a ser sacado seja menor ou igual ao saldo em conta. </p>
      * @return ???
      */   
-    sacar(){}
+    public sacar(){}
 
 
      /**
@@ -66,7 +66,7 @@ public class ContaBanco {
      * <p> Para poder sacar a conta precisa estar aberta e é preciso que o valor a ser sacado seja menor ou igual ao saldo em conta. </p>
      * @return ???
      */   
-    pagarMensal(){}
+    public pagarMensal(){}
 
 
 }
