@@ -32,7 +32,6 @@ public class ContaBanco {
      * <p> Sempre que uma nova conta for criada, o valor da variável {@paran status} é alterado para false, ou seja, a conta está fechada e o {@paran saldo} é defindo como zero.</p>
      */
     public ContaBanco(){
-        this.setNunConta(getNunConta() + 1);
         this.setSaldo(0);
         this.setStatus(false);
     
@@ -64,7 +63,7 @@ public class ContaBanco {
         return this.dono;
     }
 
-    public void setDono(){
+    public void setDono(String dono){
         this.dono = dono;
     }
 
@@ -215,20 +214,16 @@ public class ContaBanco {
 
     public void extrato(){
         System.out.println("------------------------------------");
-        System.out.println("Número da Conta: " + getNunConta());
+        System.out.println("Número da Conta ..: " + getNunConta());
+        System.out.println("Tipo .............: " + getTipo());
         if (isStatus()) {
-            System.out.println("Status da Conta: Ativa");
+            System.out.println("Status da Conta ..: Ativa");
         } else {
-            System.out.println("Status da Conta: Inativa");
+            System.out.println("Status da Conta ..: Inativa");
         }
-        if (getTipo().equals(CONTA_CORRENTE_CC)) {
-            System.out.println("Tipo da Conta: Conta Corrente");
-        } else if (getTipo().equals(CONTA_POUPANCA_CP)) {
-            System.out.println("Tipo da Conta: Conta Poupança");
-        }
-        System.out.println("Cliente: " + getDono());
-        System.out.println("Saldo: " + getSaldo());
-        System.out.println("------------------------------------");
+        System.out.println("Cliente ..........: " + getDono());
+        System.out.println("Saldo ............: R$ " + getSaldo());
+        System.out.println("====================================");
     }
 
 }// Fim da classe
