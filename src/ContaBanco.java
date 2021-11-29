@@ -1,4 +1,4 @@
-import java.lang.invoke.ConstantBootstraps;
+//import java.lang.invoke.ConstantBootstraps;
 
 /** 
  * 
@@ -32,8 +32,10 @@ public class ContaBanco {
      * <p> Sempre que uma nova conta for criada, o valor da variável {@paran status} é alterado para false, ou seja, a conta está fechada e o {@paran saldo} é defindo como zero.</p>
      */
     public ContaBanco(){
-        this.saldo = 0;
-        this.status = false;
+        this.setNunConta(getNunConta() + 1);
+        this.setSaldo(0);
+        this.setStatus(false);
+    
     }
 
 
@@ -93,23 +95,21 @@ public class ContaBanco {
      *    <li> Ao abrir uma conta, ela receberá um valor na variável {@paran saldo}, sendo: R$50,00 para Conta Corrente (CC) e R$ 150,00 para Conta Popança (CP).</li>
      * </ul>
      */
-    public void abrirConta(String tipo){
-        setTipo(tipo);
-        setStatus(true);
-        this.numConta = numConta+1; 
+    public void abrirConta(String tipoString){
+        this.setTipo(tipoString);
+        this.setStatus(true);
         try {
             if (this.tipo.equals(CONTA_CORRENTE_CC)) {
-                this.saldo = saldo+50.f;
+                this.setSaldo(50f);
                 System.out.println("Conta Corrente criada com sucesso");
             } else if (this.tipo.equals(CONTA_POUPANCA_CP)) {
-                this.saldo = saldo+150.f;
+                this.setSaldo(150f);
                 System.out.println("Conta Poupança criada com sucesso");
             } else {
                 System.out.println("Digite CC para abrir uma Conta Corrente ou CP para Conta Poupança");
             }
         } catch (Exception e) {
-            //TODO: handle exception
-            System.out.println("Ocorreu um erro. Operação não realizada");
+            System.out.println("Ocorreu um erro: " + e.getMessage());
         }
         
     }
@@ -118,20 +118,20 @@ public class ContaBanco {
     /**
      * <p> O método fecharConta é responsável por fechar uma conta. </p>
      * <ul>
-     * <li> Para ser fechada uma conta não pode ter saldo positivo ou negativo. </li> 
+     *    <li> Para ser fechada uma conta não pode ter saldo positivo ou negativo. </li> 
      * </ul>
      */
     public void fecharConta(){
         try {
             if (this.getSaldo() < 0) {
-                System.out.println("Existe débito na conta.");
+                System.out.println("Conta não pode ser fechada. Existe débito na conta.");
             } else if (this.getSaldo() > 0) {
                 System.out.println("A conta possui saldo positivo. Realize um saque no valor de R$ " + getSaldo() + " para fechar a conta.");
             } else {
                 setStatus(false);
+                System.out.println("A cnota foi fechada com sucesso");
             }
         } catch (Exception e) {
-            //TODO: Erro não identificado
             System.out.println("Ocorreu um erro. Operação não realizada");
         }
     }
@@ -139,19 +139,24 @@ public class ContaBanco {
 
      /**
      * <p> O método depositar é responsável por incluir valores em uma conta.</p>
-     * <p> Ele recebe um valor real e adiciona esse valor na variável {@paran saldo}.</p>
-     * <p> Para poder depositar a conta precisa estar aberta. </p>
-     * @return saldo
+     * <ul>
+     *    <li> Ele recebe um valor real e adiciona esse valor ao {@paran saldo}.</li>
+     *    <li> Para poder depositar a conta precisa estar aberta. </li>
+     *    <li> A conta não aceita depósito igual o inferior a zero </li>
+     * </ul>
      */   
-    public void depositar(float valor){
+    public void depositar(float valorFloat){
         try {
             if (isStatus()) {
-                setSaldo(getSaldo() + valor);
+                if (valorFloat <= 0) {
+                    System.out.println("Pedosite uma valor maior que zero.");
+                } else {
+                    setSaldo(getSaldo() + valorFloat);                    
+                }                
             } else {
                 System.out.println("Impossível fazer depósito. A conta não está aberta.");
             }
         } catch (Exception e) {
-            //TODO: Erro não identificado
             System.out.println("Ocorreu um erro. Operação não realizada");
         }
     }
@@ -160,10 +165,27 @@ public class ContaBanco {
      /**
      * <p> O método sacar é responsável por retirar valores em uma conta.</p>
      * <p> Ele recebe um valor real e subtrai esse valor na variável {@paran saldo}.</p>
-     * <p> Para poder sacar a conta precisa estar aberta e é preciso que o valor a ser sacado seja menor ou igual ao saldo em conta. </p>
-     * @return ???
+     * <p> Para poder sacar a conta precisa estar aberta, o valor a ser sacado seja menor ou igual ao saldo em conta e maior que zero. </p>
      */   
-    //public sacar(){}
+    public void sacar(float valorSaque){
+        try {
+            if (this.isStatus()) {
+                if (valorSaque > 0) {
+                    if (getSaldo() >= valorSaque) {
+                        this.setSaldo(this.getSaldo() - valorSaque);
+                    } else {
+                        System.out.println("Saldo insuficiante.");
+                    } 
+                } else {
+                    System.out.println("Imposível sacar um valor igual ou inferior a zero.");
+                }
+            } else {
+                System.out.println("Impossível realizar saque. A conta não está aberta");
+            }
+        } catch (Exception e) {
+            System.out.println("ERRO " + e.getMessage());
+        }
+    }
 
 
      /**
@@ -172,37 +194,41 @@ public class ContaBanco {
      * <p> Para poder sacar a conta precisa estar aberta e é preciso que o valor a ser sacado seja menor ou igual ao saldo em conta. </p>
      * @return ???
      */   
-    //public pagarMensal(){}
-
-
-    /**
-     * 
-     *  <ul>
-     * <li>It is <i>reflexive</i>: for any non-null reference value
-     *     {@code x}, {@code x.equals(x)} should return
-     *     {@code true}.
-     * <li>It is <i>symmetric</i>: for any non-null reference values
-     *     {@code x} and {@code y}, {@code x.equals(y)}
-     *     should return {@code true} if and only if
-     *     {@code y.equals(x)} returns {@code true}.
-     * <li>It is <i>transitive</i>: for any non-null reference values
-     *     {@code x}, {@code y}, and {@code z}, if
-     *     {@code x.equals(y)} returns {@code true} and
-     *     {@code y.equals(z)} returns {@code true}, then
-     *     {@code x.equals(z)} should return {@code true}.
-     * <li>It is <i>consistent</i>: for any non-null reference values
-     *     {@code x} and {@code y}, multiple invocations of
-     *     {@code x.equals(y)} consistently return {@code true}
-     *     or consistently return {@code false}, provided no
-     *     information used in {@code equals} comparisons on the
-     *     objects is modified.
-     * <li>For any non-null reference value {@code x},
-     *     {@code x.equals(null)} should return {@code false}.
-     * </ul>
-     * 
-     */
-    public void testeClasse(){
-        System.out.println("teste");
+    public void pagarMensal(){
+        try {
+            if (isStatus()) {
+                float TaxaDeManutencaoDaConta = 0f;
+                if (getTipo().equals(CONTA_CORRENTE_CC)) {
+                    TaxaDeManutencaoDaConta =  12f;
+                } else if (getTipo().equals(CONTA_POUPANCA_CP)) {                 
+                    TaxaDeManutencaoDaConta = 20f;
+                }
+                this.sacar(TaxaDeManutencaoDaConta);
+            } else {
+                System.out.println("A conta não está aberta");
+            }
+        } catch (Exception e) {
+            System.out.println("ERRO: " + e.getMessage());
+        }
+        
     }
 
-}
+    public void extrato(){
+        System.out.println("------------------------------------");
+        System.out.println("Número da Conta: " + getNunConta());
+        if (isStatus()) {
+            System.out.println("Status da Conta: Ativa");
+        } else {
+            System.out.println("Status da Conta: Inativa");
+        }
+        if (getTipo().equals(CONTA_CORRENTE_CC)) {
+            System.out.println("Tipo da Conta: Conta Corrente");
+        } else if (getTipo().equals(CONTA_POUPANCA_CP)) {
+            System.out.println("Tipo da Conta: Conta Poupança");
+        }
+        System.out.println("Cliente: " + getDono());
+        System.out.println("Saldo: " + getSaldo());
+        System.out.println("------------------------------------");
+    }
+
+}// Fim da classe
