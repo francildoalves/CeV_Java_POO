@@ -74,7 +74,7 @@ public class ContaBanco {
         this.saldo = saldo;
     }
     
-    public boolean getStatus(){
+    public boolean isStatus(){
         return this.status;
     }
 
@@ -123,9 +123,9 @@ public class ContaBanco {
      */
     public void fecharConta(){
         try {
-            if (this.saldo < 0) {
+            if (this.getSaldo() < 0) {
                 System.out.println("Existe débito na conta.");
-            } else if (this.saldo > 0) {
+            } else if (this.getSaldo() > 0) {
                 System.out.println("A conta possui saldo positivo. Realize um saque no valor de R$ " + getSaldo() + " para fechar a conta.");
             } else {
                 setStatus(false);
@@ -145,7 +145,7 @@ public class ContaBanco {
      */   
     public void depositar(float valor){
         try {
-            if (getStatus()) {
+            if (isStatus()) {
                 setSaldo(getSaldo() + valor);
             } else {
                 System.out.println("Impossível fazer depósito. A conta não está aberta.");
