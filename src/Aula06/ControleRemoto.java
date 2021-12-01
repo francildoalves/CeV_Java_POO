@@ -82,7 +82,7 @@ public class ControleRemoto implements Controlador {
         try {
             System.out.print("VOLUME ........: " + getVolume());
             for (int j = 0; j <= this.getVolume(); j+=5) {
-                System.out.println("|");
+                System.out.println("|☻");
             }
         } catch (Exception e) {
             System.out.println("ERRO: " + e.getMessage());

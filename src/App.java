@@ -12,7 +12,8 @@ public class App {
         cr.ligar();
         cr.aumentarVolume();
         cr.abrirMenu();
-        
+        cr.aumentarVolume();
+        cr.abrirMenu();
 
     }
     
