@@ -14,6 +14,8 @@ public class App {
         cr.abrirMenu();
         cr.aumentarVolume();
         cr.abrirMenu();
+        cr.fecharMenu();
+        cr.abrirMenu();
 
     }
     
